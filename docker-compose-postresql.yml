@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:12-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./dataps:/var/lib/postgresql
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+  node-app:
+    build: ./gate-simulator
+    image: node-app:1.0
+    container_name: js-container
+    ports:
+      - '9999:9999'
