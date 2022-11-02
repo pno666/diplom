@@ -1,9 +1,9 @@
 package page;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import data.Card;
 
-import java.time.Duration;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -16,7 +16,8 @@ import static com.codeborne.selenide.Selenide.$$;
 public class BuyPage {
     private SelenideElement heading = $$("h3").find(exactText("Оплата по карте"));
     private SelenideElement wrongFormat = $$(".input__sub").find(exactText("Неверный формат"));
-    private SelenideElement expiredValidity = $$(".input__sub").find(exactText("Истек срок действия карты"));
+    private ElementsCollection allWrongFormat = $$(byText("Неверный формат"));
+    private SelenideElement expiredValidity = $(byText("Истёк срок действия карты"));
     private SelenideElement wrongRequiredField = $$(".input__sub")
             .find(exactText("Поле обязательно для заполнения"));
     private SelenideElement wrongValidity = $$(".input__sub")
@@ -46,6 +47,10 @@ public class BuyPage {
 
     public void massageWrongFormat() {
         wrongFormat.shouldBe(visible);
+    }
+    public void  massageAllWrongFormat() {
+        allWrongFormat.shouldHaveSize(4);
+        wrongRequiredField.waitUntil(visible,15000);
     }
 
     public void massageRequiredField() {
