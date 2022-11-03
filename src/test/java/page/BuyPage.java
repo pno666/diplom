@@ -48,9 +48,10 @@ public class BuyPage {
     public void massageWrongFormat() {
         wrongFormat.shouldBe(visible);
     }
-    public void  massageAllWrongFormat() {
+
+    public void massageAllWrongFormat() {
         allWrongFormat.shouldHaveSize(4);
-        wrongRequiredField.waitUntil(visible,15000);
+        wrongRequiredField.waitUntil(visible, 15000);
     }
 
     public void massageRequiredField() {

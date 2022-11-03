@@ -13,6 +13,7 @@ public class DataHelper {
     private static String year = "23";
     private static String cardHolder = getCardHolderName();
     private static String cvcCvv = getCvcCvv();
+
     public static Card getApprovedCard() {
         return new Card(approvedCardNumber, month, year, cardHolder, cvcCvv);
     }
@@ -26,17 +27,21 @@ public class DataHelper {
     }
 
     public static Card getEmptyCardNumber() {
-        return new Card("", month, year, cardHolder, cvcCvv );
+        return new Card("", month, year, cardHolder, cvcCvv);
     }
+
     public static Card getEmptyMonthNumber() {
         return new Card(approvedCardNumber, "", year, cardHolder, cvcCvv);
     }
+
     public static Card getEmptyYearNumber() {
         return new Card(approvedCardNumber, month, "", cardHolder, cvcCvv);
     }
+
     public static Card getEmptyCardHolder() {
         return new Card(approvedCardNumber, month, year, "", cvcCvv);
     }
+
     public static Card getEmptyCvcCvvNumber() {
         return new Card(approvedCardNumber, month, year, cardHolder, "");
     }
@@ -45,10 +50,12 @@ public class DataHelper {
         int change = (int) (Math.random() * 10);
         return LocalDate.now().plusMonths(change).format(DateTimeFormatter.ofPattern("MM"));
     }
+
     private static String getCardHolderName() {
         Faker faker = new Faker();
         return faker.name().lastName() + " " + faker.name().firstName();
     }
+
     private static String getCvcCvv() {
         Faker faker = new Faker();
         return faker.number().digits(3);

@@ -24,6 +24,7 @@ public class DataBase {
             System.out.println("SQL exception in clearDB");
         }
     }
+
     private static String getData(String query) {
         String data = "";
         val runner = new QueryRunner();
@@ -34,14 +35,17 @@ public class DataBase {
         }
         return data;
     }
+
     public static String getPaymentStatus() {
         val codeSQL = "SELECT status FROM payment_entity;";
         return getData(codeSQL);
     }
+
     public static String getCreditRequestStatus() {
         val codeSQL = "SELECT status FROM credit_request_entity;";
         return getData(codeSQL);
     }
+
     public static String getOrderCount() {
         Long count = null;
         val codeSQL = "SELECT COUNT(*) FROM order_entity;";

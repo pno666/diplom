@@ -116,6 +116,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("1 word in  card holder")
     public void With1WordInCardHolder() {
@@ -151,6 +152,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Latin in month")
     public void WithLatInCardMonth() {
@@ -162,6 +164,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Cyrillic in month")
     public void WithCyrInCardMonth() {
@@ -173,6 +176,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Special characters in month")
     public void WithSpecCharInCardMonth() {
@@ -184,6 +188,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("1 number in month")
     public void WithOneNumberInCardMonth() {
@@ -195,6 +200,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("'00' in month")
     public void With00InCardMonth() {
@@ -206,6 +212,7 @@ public class PaymentTest {
         form.massageWrongCardValidity();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Value above 12 in month")
     public void WithValueAbove12InCardMonth() {
@@ -217,6 +224,7 @@ public class PaymentTest {
         form.massageWrongCardValidity();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Latin in year")
     public void WithLatInCardYear() {
@@ -228,6 +236,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Cyrillic in year")
     public void WithCyrInCardYear() {
@@ -239,6 +248,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Year with special characters")
     public void WithSpecCharInCardYear() {
@@ -250,6 +260,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Value in year less than the current year")
     public void WithLessCurYearInCardYear() {
@@ -261,6 +272,7 @@ public class PaymentTest {
         form.massageExpiredCardValidity();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("1 number in year")
     public void WithOneNumberInCardYear() {
@@ -272,6 +284,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Cyrillic in 'CVC/CVV'")
     public void WithCyrInCardCVCCVV() {
@@ -283,6 +296,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Latin in 'CVC/CVV'")
     public void WithLatInCardCVCCVV() {
@@ -294,6 +308,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Special characters in 'CVC/CVV'")
     public void WithSpecCharInCardCVCCVV() {
@@ -305,6 +320,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("2 numbers in 'CVC/CVV'")
     public void WithTwoNumbersInCardCVCCVV() {
@@ -316,6 +332,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("1 number in 'CVC/CVV'")
     public void WithOneNumbersInCardCVCCVV() {
@@ -327,6 +344,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Empty card number")
     public void WithEmptyCardNumber() {
@@ -337,6 +355,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Empty month")
     public void WithEmptyCardMonth() {
@@ -347,6 +366,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Empty year")
     public void WithEmptyCardYear() {
@@ -357,6 +377,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Empty card holder")
     public void WithEmptyCardHolder() {
@@ -367,6 +388,7 @@ public class PaymentTest {
         form.massageRequiredField();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Empty 'CVC/CVV")
     public void WithEmptyCardCvcCvv() {
@@ -377,6 +399,7 @@ public class PaymentTest {
         form.massageWrongFormat();
         assertEquals("0", DataBase.getOrderCount());
     }
+
     @Test
     @DisplayName("Empty form")
     public void WithEmptyForm() {
