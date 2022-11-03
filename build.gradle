@@ -8,21 +8,20 @@ group 'ru.netology'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 11
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
-compileJava.options.encoding = "UTF-8"
-compileTestJava.options.encoding = "UTF-8"
-
-allure{
+allure {
     autoconfigure = true
-    version='2.16.1'
+    version = '2.13.6'
 
-    useJUnit5{
-        version='2.16.1'
+    useJUnit5 {
+        version = '2.13.6'
     }
-
 }
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -32,12 +31,12 @@ dependencies {
     testImplementation 'com.codeborne:selenide:5.16.2';
     testImplementation 'com.codeborne:selenide:5.3.1';
     testImplementation 'com.github.javafaker:javafaker:1.0.2';
-    compileOnly 'org.projectlombok:lombok:1.18.12'
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.30'
     testImplementation 'mysql:mysql-connector-java:8.0.22'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
     testImplementation 'org.postgresql:postgresql:42.2.18'
     testImplementation 'io.rest-assured:rest-assured:4.3.2'
-    testImplementation 'org.slf4j:slf4j-simple:1.7.30'
 }
 
 test {
@@ -45,7 +44,7 @@ test {
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
     systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3306/app')
 //    systemProperty 'db.url', System.getProperty('db.url', 'jdbc:postgresql://localhost:5432/app')
-    systemProperty 'app.userDB', System.getProperty('app.userDB','user')
-    systemProperty 'app.password', System.getProperty('app.password','pass')
-    systemProperty 'sut.url', System.getProperty('sut.url',"http://localhost:8080")
+    systemProperty 'db.user', System.getProperty('db.user', "app")
+    systemProperty 'db.password', System.getProperty('db.password', "pass")
+    systemProperty 'sut.url', System.getProperty('sut.url', "http://localhost:8080")
 }

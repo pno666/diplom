@@ -11,23 +11,23 @@ import java.sql.SQLException;
 public class DataBase {
 
     private static String url = System.getProperty("db.url");
-    private static String userDB = System.getProperty("app.userDB");
-    private static String password = System.getProperty("app.password");
+    private static String user = System.getProperty("db.user");
+    private static String password = System.getProperty("db.password");
 
     public static void clearAll() {
         val runner = new QueryRunner();
-        try (val connect = DriverManager.getConnection(url, userDB, password)) {
-            runner.update(connect, "DELETE FROM credit_request_entity;");
-            runner.update(connect, "DELETE FROM order_entity");
-            runner.update(connect, "DELETE FROM payment_entity;");
+        try (val conn = DriverManager.getConnection(url, user, password)) {
+            runner.update(conn, "DELETE FROM payment_entity;");
+            runner.update(conn, "DELETE FROM credit_request_entity;");
+            runner.update(conn, "DELETE FROM order_entity;");
         } catch (Exception e) {
-            System.out.println("SQL exception in clearALL");
+            System.out.println("SQL exception in clearDB");
         }
     }
     private static String getData(String query) {
         String data = "";
         val runner = new QueryRunner();
-        try (val connect = DriverManager.getConnection(url, userDB, password)) {
+        try (val connect = DriverManager.getConnection(url, user, password)) {
             data = runner.query(connect, query, new ScalarHandler<>());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class DataBase {
         Long count = null;
         val codeSQL = "SELECT COUNT(*) FROM order_entity;";
         val runner = new QueryRunner();
-        try (val connect = DriverManager.getConnection(url, userDB, password)) {
+        try (val connect = DriverManager.getConnection(url, user, password)) {
             count = runner.query(connect, codeSQL, new ScalarHandler<>());
         } catch (SQLException e) {
             e.printStackTrace();

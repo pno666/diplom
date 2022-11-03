@@ -42,6 +42,7 @@ public class CreditTest {
         form.inputData(DataHelper.getApprovedCard());
         form.pushContinueButton();
         form.massageSuccess();
+        assertEquals("APPROVED", DataBase.getCreditRequestStatus());
     }
     @Test
     @DisplayName("Credit with approved card, card holder with defies")
@@ -52,6 +53,7 @@ public class CreditTest {
         form.setCardHolder("Ivanov-Krutov Ivan");
         form.pushContinueButton();
         form.massageSuccess();
+        assertEquals("APPROVED", DataBase.getCreditRequestStatus());
     }
 
     @Test
@@ -62,6 +64,7 @@ public class CreditTest {
         form.inputData(DataHelper.getDeclinedCard());
         form.pushContinueButton();
         form.massageError();
+        assertEquals("DECLINED", DataBase.getCreditRequestStatus());
     }
     @Test
     @DisplayName("Latin in card number")
@@ -72,6 +75,7 @@ public class CreditTest {
         form.setCardNumber("444444444444444D");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Cyrillic in card number")
@@ -82,6 +86,7 @@ public class CreditTest {
         form.setCardNumber("444444444444444Д");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Card number with special characters")
@@ -92,6 +97,7 @@ public class CreditTest {
         form.setCardNumber("444444444444444!");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Cyrillic in card holder")
@@ -102,6 +108,7 @@ public class CreditTest {
         form.setCardHolder("Иванов Иван");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Card holder with numbers")
@@ -112,6 +119,7 @@ public class CreditTest {
         form.setCardHolder("Iv4nov Iv4n");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Card holder with special characters")
@@ -122,6 +130,7 @@ public class CreditTest {
         form.setCardHolder("Iv!nov Iv!n");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Latin in month")
@@ -132,6 +141,7 @@ public class CreditTest {
         form.setCardMonth("m1");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Cyrillic in month")
@@ -142,6 +152,7 @@ public class CreditTest {
         form.setCardMonth("м1");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Special characters in month")
@@ -152,6 +163,7 @@ public class CreditTest {
         form.setCardMonth("*1");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("1 number in month")
@@ -162,6 +174,7 @@ public class CreditTest {
         form.setCardMonth("5");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("'00' in month")
@@ -172,6 +185,7 @@ public class CreditTest {
         form.setCardMonth("00");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Value above 12 in month")
@@ -182,6 +196,7 @@ public class CreditTest {
         form.setCardMonth("13");
         form.pushContinueButton();
         form.massageWrongCardValidity();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Latin in year")
@@ -192,6 +207,7 @@ public class CreditTest {
         form.setCardYear("3g");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Cyrillic in year")
@@ -202,6 +218,7 @@ public class CreditTest {
         form.setCardYear("3п");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Year with special characters")
@@ -212,6 +229,7 @@ public class CreditTest {
         form.setCardYear("3*");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Value in year less than the current year")
@@ -222,6 +240,7 @@ public class CreditTest {
         form.setCardYear("21");
         form.pushContinueButton();
         form.massageExpiredCardValidity();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("1 number in year")
@@ -232,6 +251,7 @@ public class CreditTest {
         form.setCardYear("1");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Cyrillic in 'CVC/CVV'")
@@ -242,6 +262,7 @@ public class CreditTest {
         form.setCardCvcCvv("1В3");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Latin in 'CVC/CVV'")
@@ -252,6 +273,7 @@ public class CreditTest {
         form.setCardCvcCvv("1D3");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Special characters in 'CVC/CVV'")
@@ -262,6 +284,7 @@ public class CreditTest {
         form.setCardCvcCvv("1*3");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("2 numbers in 'CVC/CVV'")
@@ -272,6 +295,7 @@ public class CreditTest {
         form.setCardCvcCvv("54");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("1 number in 'CVC/CVV'")
@@ -282,6 +306,7 @@ public class CreditTest {
         form.setCardCvcCvv("9");
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Empty card number")
@@ -291,6 +316,7 @@ public class CreditTest {
         form.inputData(DataHelper.getEmptyCardNumber());
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Empty month")
@@ -300,6 +326,7 @@ public class CreditTest {
         form.inputData(DataHelper.getEmptyMonthNumber());
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Empty year")
@@ -309,6 +336,7 @@ public class CreditTest {
         form.inputData(DataHelper.getEmptyYearNumber());
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Empty card holder")
@@ -318,6 +346,7 @@ public class CreditTest {
         form.inputData(DataHelper.getEmptyCardHolder());
         form.pushContinueButton();
         form.massageRequiredField();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Empty 'CVC/CVV")
@@ -327,6 +356,7 @@ public class CreditTest {
         form.inputData(DataHelper.getEmptyCvcCvvNumber());
         form.pushContinueButton();
         form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
     @Test
     @DisplayName("Empty form")
@@ -336,5 +366,6 @@ public class CreditTest {
         form.inputData(DataHelper.getEmptyCard());
         form.pushContinueButton();
         form.massageAllWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
     }
 }
