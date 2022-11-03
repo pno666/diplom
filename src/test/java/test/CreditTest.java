@@ -111,6 +111,17 @@ public class CreditTest {
         assertEquals("0", DataBase.getOrderCount());
     }
     @Test
+    @DisplayName("1 word in  card holder")
+    public void With1WordInCardHolder() {
+        val tp = new TourPage();
+        val form = tp.goToCreditPage();
+        form.inputData(DataHelper.getEmptyCardHolder());
+        form.setCardHolder("Ivanov");
+        form.pushContinueButton();
+        form.massageWrongFormat();
+        assertEquals("0", DataBase.getOrderCount());
+    }
+    @Test
     @DisplayName("Card holder with numbers")
     public void WithNumbersInCardHolder() {
         val tp = new TourPage();
@@ -184,7 +195,7 @@ public class CreditTest {
         form.inputData(DataHelper.getEmptyMonthNumber());
         form.setCardMonth("00");
         form.pushContinueButton();
-        form.massageWrongFormat();
+        form.massageWrongCardValidity();
         assertEquals("0", DataBase.getOrderCount());
     }
     @Test
