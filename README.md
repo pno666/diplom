@@ -14,7 +14,6 @@
 1. [План тестирования](https://github.com/pno666/diplom/blob/main/documents/Plan.md);
 1. [Отчёт по итогам тестирования](https://github.com/pno666/diplom/blob/main/documents/Report.md);
 1. [Отчет по итогам автоматизации](https://github.com/pno666/diplom/blob/main/documents/Summary.md)
-   git clone https://github.com/pno666/diplom.git
 
 ## Запуск приложения
 
@@ -33,7 +32,7 @@
 ### Запуск тестового приложения
 
 1. В файлах `build.gradle` и `application.properties` раскомментруйте URL той СУБД, с помощью которой хотите запустить
-   приложение (после изменений в build.gradle не забудьте загрузить изменения ctrl+shift+O):
+   приложение (после изменений в build.gradle не забудьте загрузить изменения Ctrl+Shift+O):
     * `build.gradle`
    ``` 
    systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3306/app') - MySQL
